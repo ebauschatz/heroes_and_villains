@@ -12,3 +12,11 @@ def super_by_id(request, pk):
     if request.method == 'GET':
         serializer = SuperSerializer(found_super)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def supers_list(request):
+    if request.method == 'POST':
+        serializer = SuperSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
