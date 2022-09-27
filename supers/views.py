@@ -6,11 +6,16 @@ from .models import Super
 from .serializers import SuperSerializer
 
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 def super_by_id(request, pk):
     found_super = get_object_or_404(Super, pk = pk)
     if request.method == 'GET':
         serializer = SuperSerializer(found_super)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'PUT':
+        serializer = SuperSerializer(found_super, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
