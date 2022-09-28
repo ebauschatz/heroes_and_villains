@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Super
 from .serializers import SuperSerializer
 from super_types.models import SuperType
+from powers.models import Power
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -48,3 +49,10 @@ def supers_list(request):
                 custom_response[current_type.type] = serializer.data
             return Response(custom_response, status=status.HTTP_200_OK)
         
+@api_view(['PATCH'])
+def add_power_to_super(request, super_pk, power_pk):
+    super = get_object_or_404(Super, pk = super_pk)
+    power = get_object_or_404(Power, pk = power_pk)
+    super.powers.add(power)
+    serializer = SuperSerializer(super)
+    return Response(serializer.data, status=status.HTTP_200_OK)
