@@ -355,6 +355,68 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Powers",
+			"item": [
+				{
+					"name": "Get_All_Powers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/powers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"powers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_Power",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laser Eyes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/powers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"powers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
