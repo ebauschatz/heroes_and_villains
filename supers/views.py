@@ -56,3 +56,24 @@ def add_power_to_super(request, super_pk, power_pk):
     super.powers.add(power)
     serializer = SuperSerializer(super)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def super_battle(request):
+    hero_param = request.query_params.get('hero_name')
+    hero = get_object_or_404(Super, name = hero_param)    
+    hero_serializer = SuperSerializer(hero)
+    villain_param = request.query_params.get('villain_name')
+    villain = get_object_or_404(Super, name = villain_param)
+    villain_serializer = SuperSerializer(villain)
+    custom_response = {}
+    if hero.powers.count() > villain.powers.count():
+        custom_response['winner'] = hero_serializer.data
+        custom_response['loser'] = villain_serializer.data
+        return Response(custom_response, status=status.HTTP_200_OK)
+    elif hero.powers.count() < villain.powers.count():
+        custom_response['winner'] = villain_serializer.data
+        custom_response['loser'] = hero_serializer.data
+        return Response(custom_response, status=status.HTTP_200_OK)
+    else:
+        custom_response['tied'] = [hero_serializer.data, villain_serializer.data]
+        return Response(custom_response, status=status.HTTP_200_OK)

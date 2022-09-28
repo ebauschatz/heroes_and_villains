@@ -235,6 +235,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get_Super_Battle_Result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supers/battle?hero_name=Batman&villain_name=Lex Luthor",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supers",
+								"battle"
+							],
+							"query": [
+								{
+									"key": "hero_name",
+									"value": "Batman"
+								},
+								{
+									"key": "villain_name",
+									"value": "Lex Luthor"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
