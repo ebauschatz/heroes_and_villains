@@ -17,6 +17,11 @@ These endpoints allow interaction with the super entities stored in the database
 <b>localhost:8000/api/supers/super/<int: super_pk>/power/<int: power_pk>/</b>
 - PATCH: a PATCH request to this endpoint will link the super matching the passed super_pk to the power matching the passed power_pk
 
+<b>localhost:8000/api/supers/battle/</b>
+- GET: a GET request to this endpoint with the below paramaters will stage a battle between two supers and return them under a winner and loser key to designate the outcome, or both combatants under a tied key
+    - hero_name: the name of the hero for the battle
+    - villain_name: the name of the villain for the battle
+
 
 ## Super Types Endpoints
 These endpoints allow interactions with the types of super entities stored in the database:
