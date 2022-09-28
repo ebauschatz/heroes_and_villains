@@ -9,10 +9,13 @@ These endpoints allow interaction with the super entities stored in the database
     - A "type" parameter can be used to limit the returned results to only supers of a specific type. The paramater should be set to the string of type and not the ID.
 - POST: a POST request to this endpoint will create a new super with the information provided in the body of the request
 
-<b>localhost:8000/api/supers/<int: pk></b>
+<b>localhost:8000/api/supers/<int: pk>/</b>
 - GET: a GET request to this endpoint will return details about the super with the ID matching the passed primary key
 - PUT: a PUT request to this endpont will update the super matching the passed primary key with the new information passed in the request body
 - DELETE: a DELETE request to this endpoint will delete the super matching the passed primary key from the database
+
+<b>localhost:8000/api/supers/super/<int: super_pk>/power/<int: power_pk>/</b>
+- PATCH: a PATCH request to this endpoint will link the super matching the passed super_pk to the power matching the passed power_pk
 
 
 ## Super Types Endpoints
@@ -26,3 +29,11 @@ These endpoints allow interactions with the types of super entities stored in th
 - GET: a GET request to this endpoint will return details about the super type with the ID matching the passed primary key
 - PUT: a PUT request to this endpont will update the super type matching the passed primary key with the new information passed in the request body
 - DELETE: a DELETE request to this endpoint will delete the super type matching the passed primary key from the database
+
+
+## Powers Endpoints
+These endpoints allow interactions with the types of super entities stored in the database:
+
+<b>localhost:8000/api/powers/</b>
+- GET: a GET request to this endpoint will return all the powers currently in the database
+- POST: a POST request to this endpoint will create a new power with the name passed in the request body
