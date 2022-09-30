@@ -8,3 +8,4 @@ class Super(models.Model):
     powers = models.ManyToManyField(Power)
     catchphrase = models.CharField(max_length=500)
     super_type = models.ForeignKey(SuperType, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='supers/super_uploads/', null=True)

@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from rest_framework import status
 from .models import Super
 from .serializers import SuperSerializer
@@ -77,3 +77,8 @@ def super_battle(request):
     else:
         custom_response['tied'] = [hero_serializer.data, villain_serializer.data]
         return Response(custom_response, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def super_detail(request, pk):
+    super = get_object_or_404(Super, pk = pk)
+    return render(request, 'super_detail.html', {'super': super})
